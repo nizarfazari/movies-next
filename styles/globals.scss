@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg_img {
+  background-image: url("../public/bg.jpg");
+  background-position-y: 400px;
+  background-size: cover;
+  height: 600px;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  filter: brightness(30%);
+  z-index: -1;
+}
+
+.carousel {
+  .carousel-control-prev {
+    left: -40px;
+  }
+  .carousel-control-next {
+    right: -40px;
+  }
+}
+
+.carousel_wrapping {
+  display: flex;
+  height: 500px;
+  align-items: center;
+  .carousel_grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .desc_genres {
+      display: flex;
+      gap: 0 10px;
+      span {
+        font-family: cursive;
+        border-radius: 10px;
+        padding: 4px 10px;
+      }
+      span:nth-child(3n + 1) {
+        background-color: #00b2ee;
+      }
+      span:nth-child(3n + 2) {
+        background-color: #f1c40f;
+      }
+      span:nth-child(3n + 3) {
+        background-color: #ff974b;
+      }
+    }
+  }
+}
+
+.button_full {
+  padding: 8px 20px;
+  background-color: #db053f;
+  border-radius: 20px;
+  color: white;
+}
+
+// @media screen  {
+
+// }
