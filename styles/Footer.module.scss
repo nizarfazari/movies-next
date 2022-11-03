@@ -1,0 +1,31 @@
+.footer {
+  height: 300px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.background {
+  background-image: url("../public/bg.jpg");
+  filter: brightness(30%);
+  height: 300px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: -1;
+
+  background-attachment: fixed;
+}
+
+.logo {
+  color: #db053f;
+}
+
+.faqs {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.faqs h2 {
+  margin-bottom: 16px;
+}

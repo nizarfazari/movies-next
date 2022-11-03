@@ -13,7 +13,7 @@ const Swipper = ({ movies }) => {
       <Swiper
         slidesPerView={5}
         spaceBetween={40}
-        slidesPerGroup={3}
+        slidesPerGroup={5}
         pagination={{
           clickable: true,
         }}
@@ -22,7 +22,7 @@ const Swipper = ({ movies }) => {
         style={{ position: "static" }}
       >
         {movies &&
-          movies.splice(0, 10).map((movie) => {
+          movies.map((movie) => {
             return (
               <SwiperSlide className="cursor-pointer" key={movie.id} onClick={() => navigate(`/movie/${movie.id}`)}>
                 <div className="movie-card relative">

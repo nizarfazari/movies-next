@@ -1,0 +1,46 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  max-width: 668px;
+}
+
+.accordion {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.question {
+  border: #d4d4d4 solid 1px;
+  padding: 18px 24px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+}
+
+.answer {
+  padding: 0px 10px;
+  max-height: 0;
+  transition: 0.4s ease-in;
+  overflow-y: hidden;
+}
+
+.accordion.active .answer {
+  max-height: 100px;
+  margin-top: 10px;
+  margin-left: 20px;
+  border-left: 2px solid #aab977;
+}
+
+.accordion.active .icon {
+  transform: rotate(-45deg);
+
+  transition: 0.4s linear;
+}
+
+.accordion .icon {
+  transform: rotate(90deg);
+  transition: 0.4s linear;
+  font-size: 20px;
+}
