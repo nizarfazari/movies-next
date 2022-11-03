@@ -18,6 +18,10 @@ a {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #030d17 !important;
+}
+
 .bg_img {
   background-image: url("../public/bg.jpg");
   background-position-y: 400px;
@@ -31,6 +35,7 @@ a {
 }
 
 .carousel {
+  overflow-x: hidden;
   .carousel-control-prev {
     left: -40px;
   }
@@ -72,6 +77,30 @@ a {
   background-color: #db053f;
   border-radius: 20px;
   color: white;
+}
+
+.type-movies {
+  .type-movie-active {
+    color: #aab977;
+  }
+}
+
+.mySwiper {
+  .swiper-pagination {
+    right: 0px;
+    top: 65px;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+  }
+  .swiper-pagination-bullet {
+    background: #fff;
+    width: 11px;
+    height: 11px;
+  }
+  .swiper-pagination-bullet-active {
+    background: #aab977;
+  }
 }
 
 // @media screen  {
