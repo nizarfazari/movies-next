@@ -3,7 +3,6 @@ import { FaFacebookSquare, FaTwitterSquare, FaInstagramSquare } from "react-icon
 const Footer = () => {
   return (
     <footer className={style.footer}>
-      <div className={style.background}></div>
       <div className="grid grid-cols-4 text-white container mx-auto pt-20">
         <div className="col-span-2">
           <h1 style={{ "font-family": "fantasy" }}>

@@ -1,25 +1,36 @@
 import Head from "next/head";
-import Layouts from "../components/Layouts";
 import Carousel from "react-bootstrap/Carousel";
 import { FaStar } from "react-icons/fa";
 import { BsChevronRight } from "react-icons/bs";
 import Image from "next/image";
-import Swipper from "../components/Swipper";
 import { API_TMDB_URL, BASE_URL } from "../utils/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Accordion from "../components/Accordion";
+import { useRouter } from "next/router";
+import { Accordion, Layouts, Swipper } from "../components";
 
 export default function Home({ dataMovies, dataTV }) {
+  const router = useRouter();
+  const [movies, setMovies] = useState(dataMovies.results);
+  const [tv, setTv] = useState(dataTV.results);
   const [typesMovie, settypesMovie] = useState({
     activeMovie: "POPULAR",
     activeTV: "POPULAR",
-    typeMovie: ["POPULAR", "COMING SOON", "TOP RATED"],
+    typeMovie: ["POPULAR", "TOP RATED"],
+    query: ["popular", "top_rated"],
   });
 
   //animation on type of movies
-  const toogleActive = (i, type) => {
-    type === "movie" ? settypesMovie({ ...typesMovie, activeMovie: typesMovie.typeMovie[i] }) : settypesMovie({ ...typesMovie, activeTV: typesMovie.typeMovie[i] });
+  const toogleActive = async (i, type) => {
+    if (type === "movie") {
+      settypesMovie({ ...typesMovie, activeMovie: typesMovie.typeMovie[i] });
+      const dataMovies = await axios.get(`${BASE_URL}/movie/${typesMovie.query[i]}?api_key=${API_TMDB_URL}`);
+      setMovies(dataMovies.data.results);
+    } else {
+      settypesMovie({ ...typesMovie, activeTV: typesMovie.typeMovie[i] });
+      const dataTv = await axios.get(`${BASE_URL}/tv/${typesMovie.query[i]}?api_key=${API_TMDB_URL}`);
+      setTv(dataTv.data.results);
+    }
   };
 
   const toogleActiveStyles = (i, type) => {
@@ -38,15 +49,14 @@ export default function Home({ dataMovies, dataTV }) {
 
   return (
     <div className="relative">
-      {/* {console.log(movie)} */}
       <Head>
-        <title>Create Next App</title>
+        <title>Movies</title>
         <meta name="movies" content="Movies Homepage" />
         <link rel="icon" href="./favicon.ico" />
       </Head>
 
       <Layouts>
-        <div className="bg_img"></div>
+        <div className="bg_nav"></div>
         <Carousel indicators={false}>
           <Carousel.Item>
             <div className="carousel_wrapping">
@@ -82,7 +92,7 @@ export default function Home({ dataMovies, dataTV }) {
             <div className="text-white relative">
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-4xl mb-0 font-semibold">IN THEATHER</h1>
-                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer">
+                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/movies")}>
                   VIEW ALL <BsChevronRight className="ml-1" />
                 </h3>
               </div>
@@ -97,12 +107,12 @@ export default function Home({ dataMovies, dataTV }) {
                   })}
                 </ul>
               </div>
-              <Swipper movies={dataMovies.results} />
+              <Swipper movies={movies} />
             </div>
             <div className="text-white mt-20 relative">
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-4xl mb-0 font-semibold">ON TV</h1>
-                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer">
+                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/movies")}>
                   VIEW ALL <BsChevronRight className="ml-1" />
                 </h3>
               </div>
@@ -117,7 +127,7 @@ export default function Home({ dataMovies, dataTV }) {
                   })}
                 </ul>
               </div>
-              <Swipper movies={dataTV.results} />
+              <Swipper movies={tv} />
             </div>
           </div>
         </section>
@@ -177,6 +187,7 @@ export default function Home({ dataMovies, dataTV }) {
             </div>
           </div>
         </section>
+        <div className="bg_foot"></div>
       </Layouts>
     </div>
   );

@@ -22,7 +22,7 @@ body {
   background-color: #030d17 !important;
 }
 
-.bg_img {
+.bg_nav {
   background-image: url("../public/bg.jpg");
   background-position-y: 400px;
   background-size: cover;
@@ -116,6 +116,19 @@ body {
 
 .show_movie {
   background-color: #06121e;
+}
+
+.bg_foot {
+  background-image: url("../public/bg.jpg");
+  filter: brightness(30%);
+  height: 300px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: -1;
+
+  background-attachment: fixed;
 }
 
 // @media screen  {

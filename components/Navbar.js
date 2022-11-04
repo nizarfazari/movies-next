@@ -1,12 +1,14 @@
 import { FaSearch, FaUserAlt } from "react-icons/fa";
 import style from "./../styles/Navbar.module.scss";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <nav className="sticky text-white">
       <div className="flex justify-between container mx-auto h-20 items-center">
         <div className="font-medium flex justify-between items-center">
-          <h1 style={{ "font-family": "fantasy" }}>
+          <h1 style={{ "font-family": "fantasy" }} className="cursor-pointer" onClick={() => router.push("/")}>
             MOV<span className={style.logo}>IES</span>
           </h1>
           <ul className="nav-right flex gap-x-5 font-medium m-0 items-center">
