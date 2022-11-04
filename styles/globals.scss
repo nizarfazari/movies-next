@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #030d17 !important;
+}
+
+.bg_nav {
+  background-image: url("../public/bg.jpg");
+  background-position-y: 400px;
+  background-size: cover;
+  height: 600px;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  filter: brightness(30%);
+  z-index: -1;
+  background-attachment: fixed;
+}
+
+.carousel {
+  overflow-x: hidden;
+
+  .carousel-control-prev {
+    left: -40px;
+  }
+  .carousel-control-next {
+    right: -40px;
+  }
+  .carousel-control-next:focus,
+  .carousel-control-next:hover,
+  .carousel-control-prev:focus,
+  .carousel-control-prev:hover {
+    color: #aab977;
+    text-decoration: none;
+    outline: 0;
+    opacity: 0.9;
+  }
+}
+
+.carousel_wrapping {
+  display: flex;
+  height: 500px;
+  align-items: center;
+  .carousel_grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .desc_genres {
+      display: flex;
+      gap: 0 10px;
+      span {
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 4px 10px;
+      }
+      span:nth-child(3n + 1) {
+        background-color: #00b2ee;
+      }
+      span:nth-child(3n + 2) {
+        background-color: #f1c40f;
+      }
+      span:nth-child(3n + 3) {
+        background-color: #ff974b;
+      }
+    }
+  }
+}
+
+.button_full {
+  padding: 8px 20px;
+  background-color: #db053f;
+  border-radius: 20px;
+  color: white;
+}
+
+.type-movies {
+  .type-movie-active {
+    color: #aab977;
+  }
+}
+
+.mySwiper {
+  .swiper-pagination {
+    right: 0px;
+    top: 65px;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+  }
+  .swiper-pagination-bullet {
+    background: #fff;
+    width: 11px;
+    height: 11px;
+  }
+  .swiper-pagination-bullet-active {
+    background: #aab977;
+  }
+}
+
+.show_movie {
+  background-color: #06121e;
+}
+
+.bg_foot {
+  background-image: url("../public/bg.jpg");
+  filter: brightness(30%);
+  height: 300px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: -1;
+
+  background-attachment: fixed;
+}
+
+// @media screen  {
+
+// }
