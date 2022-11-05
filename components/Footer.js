@@ -1,6 +1,8 @@
 import style from "./../styles/Footer.module.scss";
-import { FaFacebookSquare, FaTwitterSquare, FaInstagramSquare } from "react-icons/fa";
+import Image from "next/image";
+import { useRouter } from "next/router";
 const Footer = () => {
+  const router = useRouter();
   return (
     <footer className={style.footer}>
       <div className="grid grid-cols-4 text-white container mx-auto pt-20">
@@ -15,28 +17,35 @@ const Footer = () => {
         </div>
         <div>
           <ul className="ml-20 flex flex-col gap-y-2">
-            <li>HOMEPAGE</li>
-            <li>GENRES</li>
-            <li>POPULAR</li>
-            <li>TOPRATED</li>
+            <li className="cursor-pointer" onClick={() => router.push("/")}>
+              HOMEPAGE
+            </li>
+            <li className="cursor-pointer" onClick={() => router.push("/Movies")}>
+              MOVIES
+            </li>
+            <li className="cursor-pointer" onClick={() => router.push("/Genres")}>
+              GENRE
+            </li>
+            <li>TOP RATED</li>
           </ul>
         </div>
         <div className="flex flex-col items-center">
           <h4>Social Media</h4>
           <ul className="flex text-4xl pl-0 gap-x-4">
             <li>
-              <FaFacebookSquare />
+              <Image src="/icons/facebook.png" height={30} width={35} alt="icon" />
             </li>
             <li>
-              <FaTwitterSquare />
+              <Image src="/icons/instagram.png" height={30} width={35} alt="icon" />
             </li>
             <li>
-              <FaInstagramSquare />
+              <Image src="/icons/twitter.png" height={30} width={35} alt="icon" />
             </li>
           </ul>
         </div>
         <h4 className="col-span-4 mt-3 text-white text-base font-light">Movie App ©2022 Created by Muhammad Nizar Fazari</h4>
       </div>
+      <div className="bg_foot"></div>
     </footer>
   );
 };

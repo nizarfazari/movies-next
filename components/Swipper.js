@@ -6,8 +6,11 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper";
+
+import { useRouter } from "next/router";
 import { IMG_URL, IMG_URL_500 } from "../utils/api";
-const Swipper = ({ movies }) => {
+const Swipper = ({ movies, type }) => {
+  const router = useRouter();
   return (
     <>
       <Swiper
@@ -24,7 +27,7 @@ const Swipper = ({ movies }) => {
         {movies &&
           movies.map((movie) => {
             return (
-              <SwiperSlide className="cursor-pointer" key={movie.id} onClick={() => navigate(`/movie/${movie.id}`)}>
+              <SwiperSlide className="cursor-pointer" key={movie.id} onClick={() => router.push(`/detail/${movie.id}?type=${type}`)}>
                 <div className="movie-card relative">
                   <Image className="rounded-xl" width={400} height={400} src={`${IMG_URL}${movie.poster_path}`} alt="movies" />
 

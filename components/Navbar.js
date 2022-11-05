@@ -1,7 +1,7 @@
 import { FaSearch, FaUserAlt } from "react-icons/fa";
 import style from "./../styles/Navbar.module.scss";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 const Navbar = () => {
   const router = useRouter();
   return (
@@ -12,14 +12,16 @@ const Navbar = () => {
             MOV<span className={style.logo}>IES</span>
           </h1>
           <ul className="nav-right flex gap-x-5 font-medium m-0 items-center">
-            <li className={style.li}>
+            <li className={style.li} onClick={() => router.push("/")}>
               <a className={style.nav_link}>HOMEPAGE</a>
             </li>
-            <li className={style.li}>
-              <a className={style.nav_link}>GENRES</a>
+            <li className={style.li} onClick={() => router.push("/Movies")}>
+              <a className={style.nav_link}>MOVIES</a>
             </li>
-            <li className={style.li}>
-              <a className={style.nav_link}>POPULAR</a>
+            <li className={style.li} onClick={() => router.push("/Genres")}>
+              <a href="#popular" className={style.nav_link}>
+                GENRES
+              </a>
             </li>
             <li className={style.li}>
               <a className={style.nav_link}>TOP RATED</a>
@@ -32,7 +34,7 @@ const Navbar = () => {
             <input className={style.search_input} />
             <FaSearch className="absolute text-white right-5 pointer-events-none" />
           </div>
-          <div className="ml-4">
+          <div className="ml-4" onClick={() => router.push("/login")}>
             <FaUserAlt className="cursor-pointer" />
           </div>
         </div>

@@ -16,6 +16,12 @@ const nextConfig = {
         port: "",
         pathname: "/t/p/w500/**",
       },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+        port: "",
+        pathname: "/api/**",
+      },
     ],
   },
 };
