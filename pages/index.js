@@ -69,9 +69,42 @@ export default function Home({ dataMovies, dataTV }) {
                   </div>
                   <div>
                     <h1 className="text-6xl font-bold">
-                      GUARDIAN OF THE GALAXY <span className="text-4xl font-light font-['revert']">2015</span>
+                      KAKEGURUI <span className="text-4xl font-light font-['revert']">2017</span>
                     </h1>
-                    <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec...</p>
+                    <p className="mb-0">
+                      Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks
+                      that separate it from all the others.
+                    </p>
+                  </div>
+                  <div className="flex items-center text-xl font-sans">
+                    <FaStar className="text-yellow-300 mr-2" /> 7.2/10
+                  </div>
+                  <div>
+                    <button className="button_full font-medium">WATCH TRAILER</button>
+                  </div>
+                </div>
+                <div className="flex justify-end items-center">
+                  <div>
+                    <Image src="/images/kakegurui.jpg" alt="movies" width={500} height={500} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="carousel_wrapping">
+              <div className="carousel_grid container mx-auto">
+                <div className="text-white gap-y-5 flex flex-col">
+                  <div className="desc_genres">
+                    <span>SCI-FI</span>
+                    <span>ADVENTURE</span>
+                    <span>ACTION</span>
+                  </div>
+                  <div>
+                    <h1 className="text-6xl font-bold">
+                      Food Wars! Shokugeki no Soma <span className="text-4xl font-light font-['revert']">2014</span>
+                    </h1>
+                    <p className="mb-0">Souma Yukihira has been cooking alongside his father Jouichirou for as long as he can remember. As a sous chef at his father`s restaurant...</p>
                   </div>
                   <div className="flex items-center text-xl font-sans">
                     <FaStar className="text-yellow-300 mr-2" /> 7.4/10
@@ -80,8 +113,43 @@ export default function Home({ dataMovies, dataTV }) {
                     <button className="button_full font-medium">WATCH TRAILER</button>
                   </div>
                 </div>
-                <div className="flex justify-end">
-                  <Image src="/akame.jpg" alt="movies" width={500} height={300} />
+                <div className="flex justify-end items-center">
+                  <div>
+                    <Image src="/images/shokugeki.jpg" alt="movies" width={500} height={500} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="carousel_wrapping">
+              <div className="carousel_grid container mx-auto">
+                <div className="text-white gap-y-5 flex flex-col">
+                  <div className="desc_genres">
+                    <span>SCI-FI</span>
+                    <span>ADVENTURE</span>
+                    <span>ACTION</span>
+                  </div>
+                  <div>
+                    <h1 className="text-6xl font-bold">
+                      AKAME GA KILL <span className="text-4xl font-light font-['revert']">2015</span>
+                    </h1>
+                    <p className="mb-0">
+                      Night Raid is the covert assassination branch of the Revolutionary Army, an uprising assembled to overthrow Prime Minister Honest, whose avarice and greed for power has led him to take advantage of the child emperor`s
+                      inexperience.
+                    </p>
+                  </div>
+                  <div className="flex items-center text-xl font-sans">
+                    <FaStar className="text-yellow-300 mr-2" /> 7.4/10
+                  </div>
+                  <div>
+                    <button className="button_full font-medium">WATCH TRAILER</button>
+                  </div>
+                </div>
+                <div className="flex justify-end items-center">
+                  <div>
+                    <Image src="/images/akame.jpg" alt="movies" width={500} height={500} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,7 +175,7 @@ export default function Home({ dataMovies, dataTV }) {
                   })}
                 </ul>
               </div>
-              <Swipper movies={movies} />
+              <Swipper movies={movies} type="movie" />
             </div>
             <div className="text-white mt-20 relative">
               <div className="flex justify-between items-center mb-4">
@@ -127,7 +195,7 @@ export default function Home({ dataMovies, dataTV }) {
                   })}
                 </ul>
               </div>
-              <Swipper movies={tv} />
+              <Swipper movies={tv} type="tv" />
             </div>
           </div>
         </section>
@@ -149,24 +217,24 @@ export default function Home({ dataMovies, dataTV }) {
             <div className="about-movie ml-20 mt-3">
               <h2 className="text-xl font-base text-center mb-4 border-b-2 border-solid pb-2">SPOTLIGHT CHARACTER</h2>
               <div className="flex mb-4">
-                <Image src="/akame.jpg" alt="movies" width={250} height={250} />
+                <Image src="/images/esdeath.jpg" alt="movies" width={150} height={150} />
                 <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl font-medium">Ikuzo Samahadaku</h3>
-                  <h4 className="text-lg font-light">ACTOR</h4>
+                  <h3 className="text-xl font-medium">Satomi Akesaka</h3>
+                  <h4 className="text-lg font-light">Esdeath</h4>
                 </div>
               </div>
               <div className="flex mb-4">
-                <Image src="/akame.jpg" alt="movies" width={250} height={250} />
+                <Image src="/images/akame_char.jpg" alt="movies" width={150} height={150} />
                 <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl">Ikuzo Samahadaku</h3>
-                  <h4 className="text-lg font-light">ACTOR</h4>
+                  <h3 className="text-xl">Sora Amamiya</h3>
+                  <h4 className="text-lg font-light">Akame</h4>
                 </div>
               </div>
               <div className="flex mb-4">
-                <Image src="/akame.jpg" alt="movies" width={250} height={250} />
+                <Image src="/images/tatsumi.jpg" alt="movies" width={150} height={150} />
                 <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl">Ikuzo Samahadaku</h3>
-                  <h4 className="text-lg font-light">ACTOR</h4>
+                  <h3 className="text-xl">Corey Hartzog</h3>
+                  <h4 className="text-lg font-light">Tatsumi</h4>
                 </div>
               </div>
             </div>
@@ -187,7 +255,6 @@ export default function Home({ dataMovies, dataTV }) {
             </div>
           </div>
         </section>
-        <div className="bg_foot"></div>
       </Layouts>
     </div>
   );

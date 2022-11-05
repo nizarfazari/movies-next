@@ -23,7 +23,7 @@ body {
 }
 
 .bg_nav {
-  background-image: url("../public/bg.jpg");
+  background-image: url("../public/images/bg.jpg");
   background-position-y: 400px;
   background-size: cover;
   height: 600px;
@@ -62,24 +62,25 @@ body {
   .carousel_grid {
     display: grid;
     grid-template-columns: 50% 50%;
-    .desc_genres {
-      display: flex;
-      gap: 0 10px;
-      span {
-        font-weight: 600;
-        border-radius: 10px;
-        padding: 4px 10px;
-      }
-      span:nth-child(3n + 1) {
-        background-color: #00b2ee;
-      }
-      span:nth-child(3n + 2) {
-        background-color: #f1c40f;
-      }
-      span:nth-child(3n + 3) {
-        background-color: #ff974b;
-      }
-    }
+  }
+}
+
+.desc_genres {
+  display: flex;
+  gap: 0 10px;
+  span {
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 4px 10px;
+  }
+  span:nth-child(3n + 1) {
+    background-color: #00b2ee;
+  }
+  span:nth-child(3n + 2) {
+    background-color: #f1c40f;
+  }
+  span:nth-child(3n + 3) {
+    background-color: #ff974b;
   }
 }
 
@@ -87,6 +88,12 @@ body {
   padding: 8px 20px;
   background-color: #db053f;
   border-radius: 20px;
+  color: white;
+}
+
+.button_full_2 {
+  padding: 8px 20px;
+  border-radius: 5px;
   color: white;
 }
 
@@ -119,7 +126,7 @@ body {
 }
 
 .bg_foot {
-  background-image: url("../public/bg.jpg");
+  background-image: url("../public/images/bg.jpg");
   filter: brightness(30%);
   height: 300px;
   position: absolute;
@@ -129,6 +136,24 @@ body {
   z-index: -1;
 
   background-attachment: fixed;
+}
+
+.login {
+  .input-login {
+    max-width: 350px;
+    position: relative;
+  }
+  .input-login input {
+    border-radius: 5px;
+    outline: none;
+    height: 45px;
+    width: 100%;
+    font-size: 17px;
+    color: #b7b7b7;
+    background: #ffffff;
+    border: none;
+    padding-left: 56px;
+  }
 }
 
 // @media screen  {
