@@ -20,14 +20,27 @@ const Swipper = ({ movies, type }) => {
         pagination={{
           clickable: true,
         }}
+        breakpoints={{
+          375: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
         modules={[Pagination]}
         className="mySwiper"
         style={{ position: "static" }}
       >
         {movies &&
           movies.map((movie) => {
+            const temp = movie.original_title ? movie.original_title : movie.original_name;
+            const nameMovie = temp.toLowerCase().trim().split(" ").join("-");
             return (
-              <SwiperSlide className="cursor-pointer" key={movie.id} onClick={() => router.push(`/detail/${movie.id}?type=${type}`)}>
+              <SwiperSlide className="cursor-pointer" key={movie.id} onClick={() => router.push({ pathname: `/detail/${nameMovie}`, query: { type: type, id: movie.id } })}>
                 <div className="movie-card relative">
                   <Image className="rounded-xl" width={400} height={400} src={`${IMG_URL}${movie.poster_path}`} alt="movies" />
 

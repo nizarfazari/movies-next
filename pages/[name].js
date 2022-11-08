@@ -4,6 +4,7 @@ import LayoutsBg from "../components/LayoutsBg";
 import { API_TMDB_URL, BASE_URL, IMG_URL } from "../utils/api";
 import { FaCircle } from "react-icons/fa";
 import { useRouter } from "next/router";
+import { MdBrokenImage } from "react-icons/md";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 const Movies = ({ dataMovies, dataGenres }) => {
@@ -35,7 +36,7 @@ const Movies = ({ dataMovies, dataGenres }) => {
                       key={e.id}
                       className="flex items-center text-base text-gray-300 px-2 mr-2 cursor-pointer hover:rounded-full hover:border-2 hover:border-[#aab977] hover:font-medium"
                       style={{ maxWidth: "170px" }}
-                      onClick={() => router.push(`/${e.name}?category=${e.id}`, e.name)}
+                      onClick={() => router.push(`/${e.name}?category=${e.id}`)}
                     >
                       <FaCircle className="mr-3 text-xs " />
                       <button className="text-start">{e.name}</button>
@@ -50,7 +51,14 @@ const Movies = ({ dataMovies, dataGenres }) => {
                 {movies.map((movie) => {
                   return (
                     <div className="movie-card relative" key={movie.id}>
-                      <Image className="rounded-xl" width={500} height={500} src={`${IMG_URL}${movie.poster_path}`} alt="movies" />
+                      {movie.poster_path ? (
+                        <Image className="rounded-xl" width={500} height={500} src={`${IMG_URL}${movie.poster_path}`} alt="movies" />
+                      ) : (
+                        <div className="relative flex items-center justify-center">
+                          <MdBrokenImage className="absolute text-6xl" />
+                          <Image className="rounded-xl" width={500} height={500} src="/images/null.png" alt="pic-casts-broken" />
+                        </div>
+                      )}
 
                       {/* <div className="movie-description absolute">
                     <h4 className="font-bold text-lg text-white mb-3">{movie.original_title}</h4>
@@ -76,7 +84,7 @@ const Movies = ({ dataMovies, dataGenres }) => {
 export default Movies;
 
 export async function getServerSideProps(context) {
-  const { category } = context.query;
+  const { category, search, name } = context.query;
   if (category) {
     const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_TMDB_URL}&with_genres=${category}`);
     const dataGenres = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_TMDB_URL}`);
@@ -86,7 +94,16 @@ export async function getServerSideProps(context) {
         dataMovies: res.data.results || [],
       },
     };
-  } else {
+  } else if (search) {
+    const dataMovies = await axios.get(`${BASE_URL}/search/movie?api_key=${API_TMDB_URL}&query=${search}`);
+    const dataGenres = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_TMDB_URL}`);
+    return {
+      props: {
+        dataMovies: dataMovies.data.results || [],
+        dataGenres: dataGenres.data.genres || [],
+      },
+    };
+  } else if (name == "Movies") {
     const dataMovies = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_TMDB_URL}`);
     const dataGenres = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_TMDB_URL}`);
     return {
@@ -94,6 +111,19 @@ export async function getServerSideProps(context) {
         dataMovies: dataMovies.data.results || [],
         dataGenres: dataGenres.data.genres || [],
       },
+    };
+  } else if (name == "Genres") {
+    const dataMovies = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_TMDB_URL}`);
+    const dataGenres = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_TMDB_URL}`);
+    return {
+      props: {
+        dataMovies: dataMovies.data.results || [],
+        dataGenres: dataGenres.data.genres || [],
+      },
+    };
+  } else {
+    return {
+      notFound: true,
     };
   }
 }

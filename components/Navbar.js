@@ -1,9 +1,17 @@
 import { FaSearch, FaUserAlt } from "react-icons/fa";
 import style from "./../styles/Navbar.module.scss";
 import { useRouter } from "next/router";
-import Link from "next/link";
+
+import { useState } from "react";
 const Navbar = () => {
   const router = useRouter();
+  const [change, setChange] = useState("");
+
+  const searchButton = (e) => {
+    e.preventDefault();
+    router.push(`/Movies?search=${change}`);
+  };
+
   return (
     <nav className="sticky text-white">
       <div className="flex justify-between container mx-auto h-20 items-center">
@@ -19,9 +27,7 @@ const Navbar = () => {
               <a className={style.nav_link}>MOVIES</a>
             </li>
             <li className={style.li} onClick={() => router.push("/Genres")}>
-              <a href="#popular" className={style.nav_link}>
-                GENRES
-              </a>
+              <a className={style.nav_link}>GENRES</a>
             </li>
             <li className={style.li}>
               <a className={style.nav_link}>TOP RATED</a>
@@ -30,10 +36,10 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center">
-          <div className={style.searchbox}>
-            <input className={style.search_input} />
+          <form className={style.searchbox} onSubmit={(e) => searchButton(e)}>
+            <input className={style.search_input} onChange={(e) => setChange(e.target.value)} />
             <FaSearch className="absolute text-white right-5 pointer-events-none" />
-          </div>
+          </form>
           <div className="ml-4" onClick={() => router.push("/login")}>
             <FaUserAlt className="cursor-pointer" />
           </div>
