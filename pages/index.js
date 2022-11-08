@@ -85,7 +85,7 @@ export default function Home({ dataMovies, dataTV }) {
                 </div>
                 <div className="flex justify-end items-center">
                   <div>
-                    <Image src="/images/kakegurui.jpg" alt="movies" width={500} height={500} />
+                    <Image src="/images/kakegurui.jpg" alt="movies" width={500} height={500} priority />
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Home({ dataMovies, dataTV }) {
                 </div>
                 <div className="flex justify-end items-center">
                   <div>
-                    <Image src="/images/shokugeki.jpg" alt="movies" width={500} height={500} />
+                    <Image src="/images/shokugeki.jpg" alt="movies" width={500} height={500} priority />
                   </div>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function Home({ dataMovies, dataTV }) {
                 </div>
                 <div className="flex justify-end items-center">
                   <div>
-                    <Image src="/images/akame.jpg" alt="movies" width={500} height={500} />
+                    <Image src="/images/akame.jpg" alt="movies" width={500} height={500} priority />
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function Home({ dataMovies, dataTV }) {
             <div className="text-white relative">
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-4xl mb-0 font-semibold">IN THEATHER</h1>
-                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/movies")}>
+                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/Movies")}>
                   VIEW ALL <BsChevronRight className="ml-1" />
                 </h3>
               </div>
@@ -180,7 +180,7 @@ export default function Home({ dataMovies, dataTV }) {
             <div className="text-white mt-20 relative">
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-4xl mb-0 font-semibold">ON TV</h1>
-                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/movies")}>
+                <h3 className="text-lg mb-0 flex font-normal items-center cursor-pointer" onClick={() => router.push("/Movies")}>
                   VIEW ALL <BsChevronRight className="ml-1" />
                 </h3>
               </div>

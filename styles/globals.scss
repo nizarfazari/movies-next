@@ -156,6 +156,39 @@ body {
   }
 }
 
-// @media screen  {
+$small: 375;
+$medium: 768;
+$large: 1024px;
 
-// }
+//some CSS
+@media screen and (max-width: $small) {
+  //do Smth
+}
+@media screen and (min-width: $medium) {
+  //do Smth
+}
+
+@media screen and (max-width: $large) {
+  //do Smth
+  .carousel_wrapping {
+    display: flex;
+    height: 500px;
+    align-items: center;
+    .carousel_grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+}
+
+//  breakpoints={{
+//           375: {
+//             slidesPerView: 2,
+//           },
+//           768: {
+//             slidesPerView: 3,
+//           },
+//           1024: {
+//             slidesPerView: 4,
+//           },
+//         }}

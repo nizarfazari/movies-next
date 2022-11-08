@@ -8,7 +8,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 const Movie = ({ dataMovies, dataCasts, dataReview }) => {
   const router = useRouter();
-  console.log(router);
   const year = dataMovies.release_date ? dataMovies.release_date.split("-") : "";
   return (
     <div>
@@ -20,6 +19,7 @@ const Movie = ({ dataMovies, dataCasts, dataReview }) => {
               <Image className="rounded-xl" width={300} height={300} src={`${IMG_URL}${dataMovies.poster_path}`} alt="movies" />
             </div>
             <div className="movie-details text-white col-span-2">
+              {console.log(dataMovies)}
               <div className="desc_genres">
                 <span>SCI-FI</span>
                 <span>ADVENTURE</span>
@@ -65,14 +65,7 @@ const Movie = ({ dataMovies, dataCasts, dataReview }) => {
           <section className="text-white mt-20">
             <h2 className="mb-10 font-bold">Reviews</h2>
             <div>
-              {dataReview && (
-                <div className="bg-[#06121e] rounded-xl px-5 py-10 mb-4 relative flex justify-center items-center" style={{ minHeight: "300px" }}>
-                  <div className="absolute flex flex-col items-center">
-                    <BsFileEarmarkText className="text-6xl" />
-                    <p className="mt-4 font-medium">There is not data</p>
-                  </div>
-                </div>
-              ) ? (
+              {dataReview.length > 0 ? (
                 dataReview.slice(0, 3).map((e) => {
                   return (
                     <div className="bg-[#06121e] rounded-xl px-5 py-10 mb-4" key={e.id}>
@@ -104,11 +97,14 @@ const Movie = ({ dataMovies, dataCasts, dataReview }) => {
 export default Movie;
 
 export async function getServerSideProps(context) {
-  const { movie, type } = context.query;
+  const test = context.query;
+
+  const { type, id } = context.query;
+  console.log(test);
   if (type == "movie") {
-    const dataMovies = await axios.get(`${BASE_URL}/movie/${movie}?api_key=${API_TMDB_URL}`);
-    const dataCasts = await axios.get(`${BASE_URL}/movie/${movie}/credits?api_key=${API_TMDB_URL}`);
-    const dataReview = await axios.get(`${BASE_URL}/movie/${movie}/reviews?api_key=${API_TMDB_URL}`);
+    const dataMovies = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_TMDB_URL}`);
+    const dataCasts = await axios.get(`${BASE_URL}/movie/${id}/credits?api_key=${API_TMDB_URL}`);
+    const dataReview = await axios.get(`${BASE_URL}/movie/${id}/reviews?api_key=${API_TMDB_URL}`);
 
     return {
       props: {
@@ -118,9 +114,9 @@ export async function getServerSideProps(context) {
       },
     };
   } else {
-    const dataMovies = await axios.get(`${BASE_URL}/tv/${movie}?api_key=${API_TMDB_URL}`);
-    const dataCasts = await axios.get(`${BASE_URL}/tv/${movie}/credits?api_key=${API_TMDB_URL}`);
-    const dataReview = await axios.get(`${BASE_URL}/tv/${movie}/reviews?api_key=${API_TMDB_URL}`);
+    const dataMovies = await axios.get(`${BASE_URL}/tv/${id}?api_key=${API_TMDB_URL}`);
+    const dataCasts = await axios.get(`${BASE_URL}/tv/${id}/credits?api_key=${API_TMDB_URL}`);
+    const dataReview = await axios.get(`${BASE_URL}/tv/${id}/reviews?api_key=${API_TMDB_URL}`);
 
     return {
       props: {
