@@ -56,34 +56,34 @@ export default function Home({ dataMovies, dataTV }) {
       </Head>
 
       <Layouts>
-        <div className="bg_nav"></div>
         <Carousel indicators={false}>
           <Carousel.Item>
             <div className="carousel_wrapping">
+              <div className="bg_nav h-full"></div>
               <div className="carousel_grid container mx-auto">
-                <div className="text-white gap-y-5 flex flex-col">
-                  <div className="desc_genres">
+                <div className="text-white gap-y-5 flex flex-col column-1">
+                  <div className="desc_genres justify-center xl:justify-start">
                     <span>SCI-FI</span>
                     <span>ADVENTURE</span>
                     <span>ACTION</span>
                   </div>
-                  <div>
-                    <h1 className="text-6xl font-bold">
+                  <div className="title">
+                    <h1 className="text-5xl font-bold md:text-6xl">
                       KAKEGURUI <span className="text-4xl font-light font-['revert']">2017</span>
                     </h1>
-                    <p className="mb-0">
+                    <p className="mb-0 line-clamp-3">
                       Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks
                       that separate it from all the others.
                     </p>
                   </div>
-                  <div className="flex items-center text-xl font-sans">
+                  <div className="flex items-center text-xl font-sans justify-center xl:justify-start">
                     <FaStar className="text-yellow-300 mr-2" /> 7.2/10
                   </div>
-                  <div>
+                  <div className="flex justify-center xl:justify-start">
                     <button className="button_full font-medium">WATCH TRAILER</button>
                   </div>
                 </div>
-                <div className="flex justify-end items-center">
+                <div className="flex justify-end items-center column-2">
                   <div>
                     <Image src="/images/kakegurui.jpg" alt="movies" width={500} height={500} priority />
                   </div>
@@ -91,7 +91,7 @@ export default function Home({ dataMovies, dataTV }) {
               </div>
             </div>
           </Carousel.Item>
-          <Carousel.Item>
+          {/* <Carousel.Item>
             <div className="carousel_wrapping">
               <div className="carousel_grid container mx-auto">
                 <div className="text-white gap-y-5 flex flex-col">
@@ -153,7 +153,7 @@ export default function Home({ dataMovies, dataTV }) {
                 </div>
               </div>
             </div>
-          </Carousel.Item>
+          </Carousel.Item> */}
         </Carousel>
         <section className="mt-20">
           <div className="container mx-auto">
@@ -201,10 +201,11 @@ export default function Home({ dataMovies, dataTV }) {
         </section>
 
         <section className="show_movie mt-20">
-          <div className="container mx-auto text-white grid grid-cols-2 pt-20 pb-20">
-            <div>
-              <h1 className="text-4xl font-semibold mb-4">Anime TV</h1>
+          <div className="container mx-auto text-white grid xl:grid-cols-2 pt-20 pb-20 grid-cols-1 justify-items-center">
+            <div className="text-center text-h1">
+              <h1 className="text-4xl font-semibold mb-4 ">Anime TV</h1>
               <iframe
+                className="trailer-youtube"
                 width="600"
                 height="300"
                 src="https://www.youtube.com/embed/v-AGjx0N24U"
@@ -214,27 +215,22 @@ export default function Home({ dataMovies, dataTV }) {
                 allowfullscreen
               ></iframe>
             </div>
-            <div className="about-movie ml-20 mt-3">
+            <div className="about-movie mt-3">
               <h2 className="text-xl font-base text-center mb-4 border-b-2 border-solid pb-2">SPOTLIGHT CHARACTER</h2>
-              <div className="flex mb-4">
-                <Image src="/images/esdeath.jpg" alt="movies" width={150} height={150} />
-                <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl font-medium">Satomi Akesaka</h3>
-                  <h4 className="text-lg font-light">Esdeath</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-5 xl:mt-0 sm:mt-10">
+                <div className="flex justify-center">
+                  <Image src="/images/akame_char.jpg" alt="movies" width={150} height={150} />
+                  <div className="ml-10 flex flex-col justify-center">
+                    <h3 className="text-xl">Sora Amamiya</h3>
+                    <h4 className="text-lg font-light">Akame</h4>
+                  </div>
                 </div>
-              </div>
-              <div className="flex mb-4">
-                <Image src="/images/akame_char.jpg" alt="movies" width={150} height={150} />
-                <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl">Sora Amamiya</h3>
-                  <h4 className="text-lg font-light">Akame</h4>
-                </div>
-              </div>
-              <div className="flex mb-4">
-                <Image src="/images/tatsumi.jpg" alt="movies" width={150} height={150} />
-                <div className="ml-10 flex flex-col justify-center">
-                  <h3 className="text-xl">Corey Hartzog</h3>
-                  <h4 className="text-lg font-light">Tatsumi</h4>
+                <div className="flex justify-center">
+                  <Image src="/images/tatsumi.jpg" alt="movies" width={150} height={150} />
+                  <div className="ml-10 flex flex-col justify-center">
+                    <h3 className="text-xl">Corey Hartzog</h3>
+                    <h4 className="text-lg font-light">Tatsumi</h4>
+                  </div>
                 </div>
               </div>
             </div>
@@ -242,16 +238,16 @@ export default function Home({ dataMovies, dataTV }) {
         </section>
 
         <section class="mt-20 pt-10">
-          <div class="grid grid-cols-2 container mx-auto text-white">
+          <div class="grid grid-cols-1 lg:grid-cols-2  container mx-auto text-white">
             <div class="faqs__description">
               <h1 className="text-4xl mb-3 font-semibold">Frequently Asked Question</h1>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
             <div class="faqs__accordion">
-              <Accordion />
-              <Accordion />
-              <Accordion />
-              <Accordion />
+              <Accordion question="Apakah nizar itu keren ?" answer="iya, keren banget suwer gak boong" />
+              <Accordion question="Apakah film yang di headline itu bagus ?" answer="Makanya nonton dulu gak usah banyak tanya!!" />
+              <Accordion question="Bagaimana cara melihat film tersebut ?" answer="pakek matalahh" />
+              <Accordion question="Hay nama kamu siapa?" answer="gak usah sok a6" />
             </div>
           </div>
         </section>

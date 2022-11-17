@@ -1,5 +1,5 @@
 .footer {
-  height: 300px;
+  min-height: 300px;
   position: relative;
   margin-top: 100px;
 }
@@ -15,4 +15,52 @@
 
 .faqs h2 {
   margin-bottom: 16px;
+}
+
+$small: 425px;
+$medium: 768px;
+$large: 1024px;
+
+//some CSS
+@media screen and (max-width: $small) {
+  nav .wrapper {
+    display: none;
+  }
+
+  .show_movie {
+    background-color: #06121e;
+    .trailer-youtube {
+      max-width: 370px;
+    }
+  }
+}
+@media screen and (min-width: $medium) {
+  nav .phone {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $large) {
+  .bg_nav {
+    height: 75vh;
+  }
+  //do Smth
+  .carousel_wrapping {
+    display: flex;
+
+    align-items: center;
+    .carousel_grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      justify-items: center;
+      .column-1 {
+        order: 2;
+        margin-top: 50px;
+      }
+      .column-2 {
+        order: 1;
+        margin-top: 30px;
+      }
+    }
+  }
 }

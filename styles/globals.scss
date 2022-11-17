@@ -26,7 +26,7 @@ body {
   background-image: url("../public/images/bg.jpg");
   background-position-y: 400px;
   background-size: cover;
-  height: 600px;
+  height: 100%;
   width: 100%;
   top: 0;
   position: absolute;
@@ -57,11 +57,11 @@ body {
 
 .carousel_wrapping {
   display: flex;
-  height: 500px;
+  min-height: 50vh;
   align-items: center;
   .carousel_grid {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -72,6 +72,7 @@ body {
     font-weight: 600;
     border-radius: 10px;
     padding: 4px 10px;
+    align-self: center;
   }
   span:nth-child(3n + 1) {
     background-color: #00b2ee;
@@ -123,12 +124,15 @@ body {
 
 .show_movie {
   background-color: #06121e;
+  .trailer-youtube {
+    max-width: 600px;
+  }
 }
 
 .bg_foot {
   background-image: url("../public/images/bg.jpg");
   filter: brightness(30%);
-  height: 300px;
+  min-height: 100%;
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -156,27 +160,93 @@ body {
   }
 }
 
-$small: 375;
-$medium: 768;
+$small: 425px;
+$medium: 768px;
 $large: 1024px;
+$xtralarge: 1440px;
 
 //some CSS
-@media screen and (max-width: $small) {
-  //do Smth
+
+@media screen and (max-width: 99990px) {
+  nav .phone {
+    display: none;
+  }
+
+  .show_movie {
+    background-color: #06121e;
+    .text-h1 {
+      text-align: start !important;
+    }
+  }
+
+  .detail-movie {
+    .desc-movie {
+      text-align: start;
+    }
+  }
 }
-@media screen and (min-width: $medium) {
-  //do Smth
+
+@media screen and (max-width: $xtralarge) {
+  .show_movie {
+    background-color: #06121e;
+    .text-h1 {
+      text-align: start !important;
+    }
+  }
 }
 
 @media screen and (max-width: $large) {
-  //do Smth
   .carousel_wrapping {
     display: flex;
-    height: 500px;
+
     align-items: center;
     .carousel_grid {
       display: grid;
-      grid-template-columns: 50% 50%;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      justify-items: center;
+      .column-1 {
+        order: 2;
+        margin: 50px 0;
+        .title {
+          text-align: center;
+        }
+      }
+      .column-2 {
+        order: 1;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .show_movie {
+    background-color: #06121e;
+    .text-h1 {
+      text-align: center !important;
+    }
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .detail-movie {
+    .desc-movie {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: $small) {
+  nav .phone {
+    display: block;
+  }
+
+  nav .wrapper {
+    display: none;
+  }
+
+  .show_movie {
+    background-color: #06121e;
+    .trailer-youtube {
+      max-width: 370px;
     }
   }
 }
