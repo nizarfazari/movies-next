@@ -12,37 +12,39 @@ const Movie = ({ dataMovies, dataCasts, dataReview }) => {
   return (
     <div>
       <Layouts>
-        <div className="bg_nav"></div>
-        <main className="container mx-auto ">
-          <section className="grid grid-cols-3 mt-3">
-            <div className="col-span-1">
-              <Image className="rounded-xl" width={300} height={300} src={`${IMG_URL}${dataMovies.poster_path}`} alt="movies" />
-            </div>
-            <div className="movie-details text-white col-span-2">
-              {console.log(dataMovies)}
-              <div className="desc_genres">
-                <span>SCI-FI</span>
-                <span>ADVENTURE</span>
-                <span>ACTION</span>
+        <main>
+          <section className="detail-movie relative pt-5 pb-5">
+            <div className="bg_nav"></div>
+            <div className="grid grid-cols-3 container mx-auto justify-items-center">
+              <div className="lg:col-span-1 col-span-3">
+                <Image className="rounded-xl" width={300} height={300} src={`${IMG_URL}${dataMovies.poster_path}`} alt="movies" />
               </div>
-              <h1 className="text-6xl font-bold mt-2">
-                {dataMovies.original_title ? dataMovies.original_title : dataMovies.original_name} <span className="text-4xl font-light font-['revert']">{year ? year[0] : ""}</span>
-              </h1>
-              <h2 className="mt-4">The Synopsis is : </h2>
-              <p className="mb-0">{dataMovies.overview}</p>
-              <div className="flex items-center text-xl font-sans mt-2">
-                <FaStar className="text-yellow-300 mr-2" />
-                Rating : {Math.min(dataMovies.vote_average).toFixed(1)}/10
-              </div>
-              <div className="mt-4">
-                <button className="button_full font-medium">WATCH TRAILER</button>
+              <div className="desc-movie text-white col-span-2 ml-5 xl:ml-0 lg:col-span-2 col-span-3 lg:mt-0 mt-10">
+                <div className="desc_genres  justify-center lg:justify-start">
+                  {dataMovies.genres.map((genre) => {
+                    return <span key={genre.id}>{genre.name.toUpperCase()}</span>;
+                  })}
+                </div>
+
+                <h1 className="text-6xl font-bold mt-2">
+                  {dataMovies.original_title ? dataMovies.original_title : dataMovies.original_name} <span className="text-4xl font-light font-['revert']">{year ? year[0] : ""}</span>
+                </h1>
+                <h2 className="mt-4">The Synopsis is : </h2>
+                <p className="mb-0 line-clamp-3">{dataMovies.overview}</p>
+                <div className="flex items-center text-xl font-sans mt-2 justify-center lg:justify-start">
+                  <FaStar className="text-yellow-300 mr-2" />
+                  Rating : {Math.min(dataMovies.vote_average).toFixed(1)}/10
+                </div>
+                <div className="mt-4">
+                  <button className="button_full font-medium">WATCH TRAILER</button>
+                </div>
               </div>
             </div>
           </section>
 
-          <section className="text-white" style={{ marginTop: "100px" }}>
+          <section className="text-white container mx-auto" style={{ marginTop: "100px" }}>
             <h2 className="mb-10 font-bold">The Casters is</h2>
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
               {dataCasts.cast.slice(0, 8).map((cast) => {
                 return (
                   <div className="movie-card relative" key={cast.id}>
@@ -62,7 +64,7 @@ const Movie = ({ dataMovies, dataCasts, dataReview }) => {
             </div>
           </section>
 
-          <section className="text-white mt-20">
+          <section className="text-white mt-20 container mx-auto">
             <h2 className="mb-10 font-bold">Reviews</h2>
             <div>
               {dataReview.length > 0 ? (

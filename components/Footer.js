@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className="grid grid-cols-4 text-white container mx-auto pt-20">
-        <div className="col-span-2">
+        <div className="sm:col-span-2 col-span-4">
           <h1 style={{ "font-family": "fantasy" }}>
             MOV<span className={style.logo}>IES</span>
           </h1>
@@ -16,7 +16,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <ul className="ml-20 flex flex-col gap-y-2">
+          <ul className="xl:ml-20 md:ml-6 pl-0 flex flex-col gap-y-2">
             <li className="cursor-pointer" onClick={() => router.push("/")}>
               HOMEPAGE
             </li>
@@ -29,7 +29,7 @@ const Footer = () => {
             <li>TOP RATED</li>
           </ul>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center col-span-2 md:col-span-1">
           <h4>Social Media</h4>
           <ul className="flex text-4xl pl-0 gap-x-4">
             <li>

@@ -13,28 +13,32 @@ const Login = () => {
             <h3>Welcome to the Movies Website.</h3>
           </div>
         </div>
-        <div className="text-white pt-20 mt-20" style={{ backgroundColor: "#030d17" }}>
+        <div className="text-white pt-20 mt-10 bg-[#030d17] h-screen">
           <div className="container mx-auto">
-            <div className=" grid grid-cols-2 mb-5">
-              <div className="flex flex-col login" style={{ paddingLeft: "145px" }}>
-                <h1>Login</h1>
-                <div className="input-login mb-4 mt-4">
-                  <FaEnvelope className="absolute left-4 text-3xl top-2 text-[#b7b7b7]" />
-                  <input />
-                </div>
-                <div className="input-login">
-                  <FaLock className="absolute left-4 text-3xl top-2 text-[#b7b7b7]" />
-                  <input />
-                </div>
-                <div>
-                  <button className="mt-4 button_full_2 font-medium bg-[#db053f]">Login Now</button>
+            <div className="grid lg:grid-cols-2 mb-5 grid-cols-1 justify-items-stretch">
+              <div className="flex justify-center">
+                <div className="flex flex-col login min-w-[400px]">
+                  <h1>Login</h1>
+                  <div className="input-login mb-4 mt-4">
+                    <FaEnvelope className="absolute left-4 text-3xl top-2 text-[#b7b7b7]" />
+                    <input />
+                  </div>
+                  <div className="input-login">
+                    <FaLock className="absolute left-4 text-3xl top-2 text-[#b7b7b7]" />
+                    <input />
+                  </div>
+                  <div>
+                    <button className="mt-4 button_full_2 font-medium bg-[#db053f]">Login Now</button>
+                  </div>
                 </div>
               </div>
-              <div className=" border-l-2" style={{ paddingLeft: "90px", minHeight: "400px" }}>
-                <h1>Dont’t Have An Account?</h1>
-                <button className="button_full_2 font-medium bg-[#db053f] mt-4" onClick={() => router.push("/register")}>
-                  Register Now
-                </button>
+              <div className="lg:border-l-2 border-l-0 lg:min-h-[300px] flex justify-center mt-10 lg:mt-0">
+                <div className="min-w-[400px]">
+                  <h1>Dont’t Have An Account?</h1>
+                  <button className="button_full_2 font-medium bg-[#db053f] mt-4" onClick={() => router.push("/register")}>
+                    Register Now
+                  </button>
+                </div>
               </div>
             </div>
             <div className="flex flex-col items-center mt-4">
